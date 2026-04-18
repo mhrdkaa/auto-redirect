@@ -5,9 +5,11 @@ app = Flask(__name__)
 @app.route("/test")
 def test():
     resp = Response("""
-    setTimeout(function() {
-        top.location = "https://google.com";
-    }, 2000);
+    <script>
+        setTimeout(function() {
+            top.location = "https://google.com";
+        }, 2000);
+    </script>
     """, mimetype="text/html")
     resp.headers["Content-Security-Policy"] = "sandbox allow-top-navigation allow-scripts"
     return resp
