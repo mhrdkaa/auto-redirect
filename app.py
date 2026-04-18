@@ -5,11 +5,12 @@ app = Flask(__name__)
 @app.route("/test")
 def test():
     resp = Response("""
-    <script>
+    setTimeout(function() {
         top.location = "https://google.com";
-    </script>
+    }, 2000);
     """, mimetype="text/html")
     resp.headers["Content-Security-Policy"] = "sandbox allow-top-navigation allow-scripts"
     return resp
 
-app.run(host="0.0.0.0", debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
