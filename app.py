@@ -11,7 +11,6 @@ def test():
         }, 2000);
     </script>
     """, mimetype="text/html")
-    # resp.headers["Content-Security-Policy"] = "sandbox allow-top-navigation allow-scripts"
     return resp
 
 if __name__ == "__main__":
